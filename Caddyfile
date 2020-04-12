@@ -2,20 +2,32 @@ meet.nofech.cz jitsi.nofech.cz {
   root * /home/nisim/web/meet.nofech.cz/public
   encode zstd gzip
   file_server
-  header /css/* Cache-Control "max-age=31536000"
+  header /* Cache-Control "max-age=31536000"
   handle /css/*
-  header /images/* Cache-Control "public, max-age=31536000"
   handle /images/*
-  header /lang/* Cache-Control "max-age=31536000"
   handle /lang/*
-  header /lib/* Cache-Control "max-age=31536000"
-  handle /lib/*
-  header /sounds/* Cache-Control "public, max-age=31536000"
+  handle /libs/*
   handle /sounds/*
-  header /static/* Cache-Control "max-age=31536000"
   handle /static/*
-  header /favicon.ico Cache-Control "public, max-age=31536000"
-  header / Cache-Control "max-age=31536000"
+  handle /http-bind* {
+    reverse_proxy 127.0.0.1:12345
+  }
+  handle /* {
+    rewrite * /index.html
+  }
+}
+
+mee.nofech.cz {
+  root * /home/nisim/web/mee/public
+  encode zstd gzip
+  file_server
+  header /* Cache-Control "max-age=31536000"
+  handle /css/*
+  handle /images/*
+  handle /lang/*
+  handle /libs/*
+  handle /sounds/*
+  handle /static/*
   handle /http-bind* {
     reverse_proxy 127.0.0.1:12345
   }
