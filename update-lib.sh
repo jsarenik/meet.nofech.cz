@@ -1,19 +1,22 @@
 #!/bin/sh
 
-for i in \
-  app.bundle.min.js \
-  app.bundle.min.map \
-  do_external_connect.min.js \
-  do_external_connect.min.map \
-  lib-jitsi-meet.min.js \
-  lib-jitsi-meet.min.map
+JITSRC=$HOME/src/jitsi-meet
+
+for i in libs css images lang sounds static
 do
-  cp -v ~/src/jitsi-meet/libs/$i public/lib/
+  rsync -av --delete $JITSRC/$i/ public/$i/
 done
 
-for i in css images lang sounds static
-do
-  rsync -av --delete ~/src/jitsi-meet/$i/ public/$i/
-done
-
+test -d public/orig || mkdir public/orig
+cp -v \
+  $JITSRC/index.html \
+  $JITSRC/config.js \
+  $JITSRC/interface_config.js \
+  $JITSRC/logging_config.js \
+  $JITSRC/plugin.head.html \
+  $JITSRC/head.html \
+  $JITSRC/base.html \
+  $JITSRC/title.html \
+  $JITSRC/body.html \
+  public/orig/
 cp -v main-cs.json languages-cs.json public/lang/
