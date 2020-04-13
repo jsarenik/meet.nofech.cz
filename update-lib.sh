@@ -4,7 +4,7 @@ JITSRC=$HOME/src/jitsi-meet
 
 for i in libs css images lang sounds static
 do
-  rsync -av --delete $JITSRC/$i/ public/$i/
+  rsync -av $JITSRC/$i/ public/$i/
 done
 
 test -d public/orig || mkdir public/orig
