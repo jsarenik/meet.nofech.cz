@@ -1,0 +1,304 @@
+{
+  "apps": {
+    "http": {
+      "servers": {
+        "srv0": {
+          "listen": [
+            ":443"
+          ],
+          "routes": [
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "vars",
+                          "root": "/home/nisim/web/meet.nofech.cz/public"
+                        }
+                      ]
+                    },
+                    {
+                      "handle": [
+                        {
+                          "handler": "headers",
+                          "response": {
+                            "set": {
+                              "Cache-Control": [
+                                "max-age=31536000"
+                              ]
+                            }
+                          }
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/*"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "gzip": {},
+                            "zstd": {}
+                          },
+                          "handler": "encode"
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group17",
+                      "handle": [
+                        {
+                          "handler": "subroute"
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/sounds/*",
+                            "/libs/*",
+                            "/lang/*",
+                            "/css/*",
+                            "/images/*",
+                            "/static/*"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group17",
+                      "handle": [
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            {
+                              "handle": [
+                                {
+                                  "handler": "reverse_proxy",
+                                  "upstreams": [
+                                    {
+                                      "dial": "127.0.0.1:12345"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/http-bind*"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group17",
+                      "handle": [
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            {
+                              "group": "group7",
+                              "handle": [
+                                {
+                                  "handler": "rewrite",
+                                  "uri": "/index.html"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/*"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "handle": [
+                        {
+                          "handler": "file_server",
+                          "hide": [
+                            "/root/caddy/Caddyfile"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "meet.nofech.cz",
+                    "jitsi.nofech.cz"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "vars",
+                          "root": "/home/nisim/web/mee/public"
+                        }
+                      ]
+                    },
+                    {
+                      "handle": [
+                        {
+                          "handler": "headers",
+                          "response": {
+                            "set": {
+                              "Cache-Control": [
+                                "max-age=31536000"
+                              ]
+                            }
+                          }
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/*"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "gzip": {},
+                            "zstd": {}
+                          },
+                          "handler": "encode"
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group18",
+                      "handle": [
+                        {
+                          "handler": "subroute"
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/images/*",
+                            "/css/*",
+                            "/lang/*",
+                            "/sounds/*",
+                            "/libs/*",
+                            "/static/*"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group18",
+                      "handle": [
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            {
+                              "handle": [
+                                {
+                                  "handler": "reverse_proxy",
+                                  "upstreams": [
+                                    {
+                                      "dial": "127.0.0.1:12345"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/http-bind*"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group18",
+                      "handle": [
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            {
+                              "group": "group15",
+                              "handle": [
+                                {
+                                  "handler": "rewrite",
+                                  "uri": "/index.html"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/*"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "handle": [
+                        {
+                          "handler": "file_server",
+                          "hide": [
+                            "/root/caddy/Caddyfile"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "mee.nofech.cz",
+		    "kenti.bublina.eu.org"
+                  ]
+                }
+              ],
+              "terminal": true
+            }
+          ],
+	  "tls_connection_policies": [{
+            "default_sni": "mee.nofech.cz"
+          }]
+        }
+      }
+    }
+  }
+}
