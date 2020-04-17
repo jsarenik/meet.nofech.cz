@@ -44,6 +44,36 @@
                     {
                       "handle": [
                         {
+                          "handler": "headers",
+                          "response": {
+                            "set": {
+                              "Referrer-Policy": [
+                                "no-referrer-when-downgrade"
+                              ],
+                              "Strict-Transport-Security": [
+                                "max-age=31536000;"
+                              ],
+                              "X-Content-Type-Options": [
+                                "nosniff"
+                              ],
+                              "X-Frame-Options": [
+                                "DENY"
+                              ]
+                            }
+                          }
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "handle": [
+                        {
                           "encodings": {
                             "gzip": {},
                             "zstd": {}
@@ -187,6 +217,36 @@
                     {
                       "handle": [
                         {
+                          "handler": "headers",
+                          "response": {
+                            "set": {
+                              "Referrer-Policy": [
+                                "no-referrer-when-downgrade"
+                              ],
+                              "Strict-Transport-Security": [
+                                "max-age=31536000;"
+                              ],
+                              "X-Content-Type-Options": [
+                                "nosniff"
+                              ],
+                              "X-Frame-Options": [
+                                "DENY"
+                              ]
+                            }
+                          }
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "handle": [
+                        {
                           "encodings": {
                             "gzip": {},
                             "zstd": {}
@@ -297,6 +357,48 @@
 	  "tls_connection_policies": [{
             "default_sni": "mee.nofech.cz"
           }]
+        },
+        "srv1": {
+          "automatic_https": {
+            "skip": [
+              "217.195.164.4"
+            ]
+          },
+          "listen": [
+            ":80"
+          ],
+          "routes": [
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "static_response",
+                          "headers": {
+                            "Location": [
+                              "https://mee.nofech.cz{http.request.uri}"
+                            ]
+                          },
+                          "status_code": 302
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "217.195.164.4"
+                  ]
+                }
+              ],
+              "terminal": true
+            }
+          ]
         }
       }
     }
