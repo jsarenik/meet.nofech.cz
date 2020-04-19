@@ -1,8 +1,8 @@
 <html itemscope itemtype="http://schema.org/Product" prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="/" />
 <title>Jitsi Meet</title>
 <meta property="og:title" content="Jitsi Meet"/>
@@ -13,22 +13,22 @@
 <meta itemprop="description" content="Join a WebRTC video conference powered by the Jitsi Videobridge"/>
 <meta itemprop="image" content="images/jitsilogo.png?v=1"/>
 <link rel="icon" type="image/png" href="images/favicon.ico?v=1"/>
-    <script>
-        (function() {
-            var windowName = window.name;
-            var parentWindow = window.opener;
-            if (parentWindow
-                && parentWindow.JitsiMeetJS
-                && parentWindow.JitsiMeetJS.app) {
-                var globalNS = parentWindow.JitsiMeetJS.app;
-                if (globalNS.oauthCallbacks
-                    && typeof globalNS.oauthCallbacks[windowName]
-                        === 'function') {
-                    globalNS.oauthCallbacks[windowName](window.location.href);
-                }
-            }
-        })();
-    </script>
+<script>
+(function() {
+var windowName = window.name;
+var parentWindow = window.opener;
+if (parentWindow
+&& parentWindow.JitsiMeetJS
+&& parentWindow.JitsiMeetJS.app) {
+var globalNS = parentWindow.JitsiMeetJS.app;
+if (globalNS.oauthCallbacks
+&& typeof globalNS.oauthCallbacks[windowName]
+=== 'function') {
+globalNS.oauthCallbacks[windowName](window.location.href);
+}
+}
+})();
+</script>
 </head>
 <body>
 </body>

@@ -2,14 +2,12 @@
 
 JITSRC=$HOME/src/jitsi-meet
 
-for i in libs css images lang sounds static
+for i in libs css images lang sounds static connection_optimization
 do
   rsync -av $JITSRC/$i/ public/$i/
 done
 
-test -d public/orig || mkdir public/orig
 cp -v \
-  $JITSRC/index.html \
   $JITSRC/config.js \
   $JITSRC/interface_config.js \
   $JITSRC/logging_config.js \
@@ -18,5 +16,10 @@ cp -v \
   $JITSRC/base.html \
   $JITSRC/title.html \
   $JITSRC/body.html \
-  public/orig/
+  public/
+cp -v  $JITSRC/index.html public/static/
 cp -v main-cs.json languages-cs.json public/lang/
+cd public/static
+./statify.sh *.html
+cd -
+cat public/static/index.html > public/index.html
