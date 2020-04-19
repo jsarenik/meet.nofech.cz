@@ -23,11 +23,12 @@
 <script>
 var config = {
 hosts: {
-domain: 'jitsi-meet.example.com',
-muc: 'conference.jitsi-meet.example.com'
+domain: 'meet.jitsi',
+muc: 'muc.meet.jitsi'
 },
-bosh: '//jitsi-meet.example.com/http-bind',
+bosh: '/http-bind',
 clientNode: 'http://jitsi.org/jitsimeet',
+focusUserJid: 'focus@auth.meet.jitsi',
 testing: {
 p2pTestMode: false
 },
@@ -36,9 +37,15 @@ enableNoisyMicDetection: true,
 desktopSharingChromeExtId: null,
 desktopSharingChromeSources: [ 'screen', 'window', 'tab' ],
 desktopSharingChromeMinExtVersion: '0.1',
+liveStreamingEnabled: false,
 channelLastN: -1,
+useNicks: true,
+requireDisplayName: false,
 enableWelcomePage: true,
+defaultLanguage: 'cs',
 enableUserRolesBasedOnToken: false,
+gatherStats: false,
+disableThirdPartyRequests: true,
 p2p: {
 enabled: true,
 stunServers: [
@@ -55,7 +62,7 @@ makeJsonParserHappy: 'even if last key had a trailing comma'
 </script>
 <script>
 var interfaceConfig = {
-DEFAULT_BACKGROUND: '#474747',
+DEFAULT_BACKGROUND: '#274727',
 DISABLE_VIDEO_BACKGROUND: false,
 INITIAL_TOOLBAR_TIMEOUT: 20000,
 TOOLBAR_TIMEOUT: 4000,
