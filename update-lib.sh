@@ -8,9 +8,6 @@ do
 done
 
 cp -v \
-  $JITSRC/config.js \
-  $JITSRC/interface_config.js \
-  $JITSRC/logging_config.js \
   $JITSRC/plugin.head.html \
   $JITSRC/head.html \
   $JITSRC/base.html \
