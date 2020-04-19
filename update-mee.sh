@@ -1,4 +1,5 @@
 #!/bin/sh
 
-rsync -av --delete --exclude public/index.html . kenti:web/mee/
-
+./make-mee.sh
+rsync -av --delete . kenti:web/mee/
+git reset --hard
