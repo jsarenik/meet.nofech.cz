@@ -2,13 +2,12 @@
 
 JITSRC=$HOME/src/jitsi-meet
 
-for i in libs css sounds connection_optimization
+for i in images libs css sounds connection_optimization
 do
   rsync -av --delete $JITSRC/$i/ public/$i/
 done
-rsync -av $JITSRC/static/ public/static/
 rsync -av $JITSRC/lang/ public/lang/
-rsync -av $JITSRC/images/ public/images/
+rsync -av $JITSRC/static/ $JITSRC/index.html static/
 
 cp -v \
   $JITSRC/plugin.head.html \
@@ -17,9 +16,5 @@ cp -v \
   $JITSRC/title.html \
   $JITSRC/body.html \
   public/
-cp -v  $JITSRC/index.html public/static/
 cp -v main-cs.json languages-cs.json public/lang/
-cd public/static
-./statify.sh *.html
-cd -
-cat public/static/index.html > public/index.html
+cp -v deep-linking-image.png public/images/
