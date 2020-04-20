@@ -36,7 +36,12 @@
                       "match": [
                         {
                           "path": [
-                            "/*"
+                            "/sounds/*",
+                            "/libs/*",
+                            "/lang/*",
+                            "/css/*",
+                            "/images/*",
+                            "/static/*"
                           ]
                         }
                       ]
@@ -209,7 +214,12 @@
                       "match": [
                         {
                           "path": [
-                            "/*"
+                            "/sounds/*",
+                            "/libs/*",
+                            "/lang/*",
+                            "/css/*",
+                            "/images/*",
+                            "/static/*"
                           ]
                         }
                       ]
@@ -347,16 +357,18 @@
                 {
                   "host": [
                     "mee.nofech.cz",
-		    "kenti.bublina.eu.org"
+                    "kenti.bublina.eu.org"
                   ]
                 }
               ],
               "terminal": true
             }
           ],
-	  "tls_connection_policies": [{
-            "default_sni": "mee.nofech.cz"
-          }]
+          "tls_connection_policies": [
+            {
+              "default_sni": "mee.nofech.cz"
+            }
+          ]
         },
         "srv1": {
           "automatic_https": {
