@@ -15,3 +15,4 @@ s|^\s*<link rel=\"stylesheet\" href=\"\([^\"]\+\)\".*$|\
   $i \
   | cpp | sed '/^#/d;/^$/d;s/^\s\+//' > public/$i
 done
+cat public/static/index.html > public/index.html
