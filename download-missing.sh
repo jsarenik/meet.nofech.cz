@@ -2,7 +2,7 @@
 #
 # usage: while true; do ./download-missing.sh ; done
 
-URL=https://meet.nofech.cz
+URL=https://meet.jit.si
 
 myget() {
   OUT="public/$1"
