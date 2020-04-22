@@ -196,7 +196,7 @@ var config = {
     // fileRecordingsServiceSharingEnabled: false,
 
     // Whether to enable live streaming or not.
-    liveStreamingEnabled: true,
+    // liveStreamingEnabled: false,
 
     // Transcription (in interface_config,
     // subtitles and buttons can be configured)
