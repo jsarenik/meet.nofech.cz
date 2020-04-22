@@ -25,7 +25,7 @@ cp -v static/welcomePageAdditionalContent.html $BINDIR/static/
 mycp css/all.css images/add_to_slack.png images/welcome_page/appstore.svg images/welcome_page/facebook.svg images/welcome_page/github.svg images/welcome_page/googleplay.png images/welcome_page/linkedin.svg images/welcome_page/twitter.svg
 
 cd $JITSRC
-mycp plugin.head.html head.html base.html title.html body.html
+mycp plugin.head.html head.html base.html title.html
 
 cd $BINDIR
 cp -v main-cs.json languages-cs.json public/lang/
