@@ -2,10 +2,11 @@
 
 JITSRC=$HOME/src/jitsi-meet
 
-for i in images libs css sounds connection_optimization
+for i in libs css sounds connection_optimization
 do
   rsync -av --delete $JITSRC/$i/ public/$i/
 done
+rsync -av $JITSRC/images/ public/images/
 rsync -av $JITSRC/lang/ public/lang/
 rsync -av $JITSRC/static/ $JITSRC/index.html static/
 
