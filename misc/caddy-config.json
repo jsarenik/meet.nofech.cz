@@ -3,48 +3,6 @@
     "http": {
       "servers": {
         "srv0": {
-          "automatic_https": {
-            "skip": [
-              "217.195.164.4"
-            ]
-          },
-          "listen": [
-            ":80"
-          ],
-          "routes": [
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "handler": "static_response",
-                          "headers": {
-                            "Location": [
-                              "https://mee.nofech.cz{http.request.uri}"
-                            ]
-                          },
-                          "status_code": 302
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
-                    "217.195.164.4"
-                  ]
-                }
-              ],
-              "terminal": true
-            }
-          ]
-        },
-        "srv1": {
           "listen": [
             ":443"
           ],
@@ -100,12 +58,6 @@
                               ],
                               "Strict-Transport-Security": [
                                 "max-age=31536000;"
-                              ],
-                              "X-Content-Type-Options": [
-                                "nosniff"
-                              ],
-                              "X-Frame-Options": [
-                                "DENY"
                               ]
                             }
                           }
@@ -120,7 +72,7 @@
                       ]
                     },
                     {
-                      "group": "group8",
+                      "group": "group9",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -153,13 +105,52 @@
                       "match": [
                         {
                           "path": [
-                            "/http-bind*"
+                            "/xmpp-websocket"
                           ]
                         }
                       ]
                     },
                     {
-                      "group": "group8",
+                      "group": "group9",
+                      "handle": [
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            {
+                              "handle": [
+                                {
+                                  "handler": "headers",
+                                  "request": {
+                                    "set": {
+                                      "Host": [
+                                        "meet.jitsi"
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "handler": "reverse_proxy",
+                                  "upstreams": [
+                                    {
+                                      "dial": "127.0.0.1:12345"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/http-bind"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group9",
                       "handle": [
                         {
                           "handler": "subroute"
@@ -180,13 +171,13 @@
                       ]
                     },
                     {
-                      "group": "group8",
+                      "group": "group9",
                       "handle": [
                         {
                           "handler": "subroute",
                           "routes": [
                             {
-                              "group": "group2",
+                              "group": "group3",
                               "handle": [
                                 {
                                   "handler": "rewrite",
@@ -279,12 +270,6 @@
                               ],
                               "Strict-Transport-Security": [
                                 "max-age=31536000;"
-                              ],
-                              "X-Content-Type-Options": [
-                                "nosniff"
-                              ],
-                              "X-Frame-Options": [
-                                "DENY"
                               ]
                             }
                           }
@@ -299,7 +284,7 @@
                       ]
                     },
                     {
-                      "group": "group10",
+                      "group": "group11",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -332,13 +317,52 @@
                       "match": [
                         {
                           "path": [
-                            "/http-bind*"
+                            "/xmpp-websocket"
                           ]
                         }
                       ]
                     },
                     {
-                      "group": "group10",
+                      "group": "group11",
+                      "handle": [
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            {
+                              "handle": [
+                                {
+                                  "handler": "headers",
+                                  "request": {
+                                    "set": {
+                                      "Host": [
+                                        "meet.jitsi"
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "handler": "reverse_proxy",
+                                  "upstreams": [
+                                    {
+                                      "dial": "127.0.0.1:12345"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "match": [
+                        {
+                          "path": [
+                            "/http-bind"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group11",
                       "handle": [
                         {
                           "handler": "subroute"
@@ -359,13 +383,13 @@
                       ]
                     },
                     {
-                      "group": "group10",
+                      "group": "group11",
                       "handle": [
                         {
                           "handler": "subroute",
                           "routes": [
                             {
-                              "group": "group5",
+                              "group": "group7",
                               "handle": [
                                 {
                                   "handler": "rewrite",
@@ -411,6 +435,48 @@
           "tls_connection_policies": [
             {
               "default_sni": "mee.nofech.cz"
+            }
+          ]
+        },
+        "srv1": {
+          "automatic_https": {
+            "skip": [
+              "217.195.164.4"
+            ]
+          },
+          "listen": [
+            ":80"
+          ],
+          "routes": [
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "static_response",
+                          "headers": {
+                            "Location": [
+                              "https://mee.nofech.cz{http.request.uri}"
+                            ]
+                          },
+                          "status_code": 302
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "217.195.164.4"
+                  ]
+                }
+              ],
+              "terminal": true
             }
           ]
         }
