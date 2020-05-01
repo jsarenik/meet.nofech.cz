@@ -11,7 +11,7 @@ kenti.bublina.eu.org mee.nofech.cz {
   encode zstd gzip
   file_server
   @jitsi-dirs {
-    path /css/* /static/* /images/* /lang/* /libs/* /sounds/* /extra/*
+    path /css/* /fonts/* /static/* /images/* /lang/* /libs/* /sounds/* /extra/* /*.js /*.ico /*.html /*.txt
   }
   header {
 	# enable HSTS
@@ -19,6 +19,7 @@ kenti.bublina.eu.org mee.nofech.cz {
 
 	# disable clients from sniffing the media type
 	#X-Content-Type-Options nosniff
+	Access-Control-Allow-Origin *
 
 	# clickjacking protection
 	#X-Frame-Options DENY
@@ -46,7 +47,7 @@ meet.nofech.cz, jitsi.nofech.cz {
   encode zstd gzip
   file_server
   @jitsi-dirs {
-    path /css/* /static/* /images/* /lang/* /libs/* /sounds/* /extra/*
+    path /css/* /fonts/* /static/* /images/* /lang/* /libs/* /sounds/* /extra/* /*.js /*.ico /*.html /*.txt
   }
   header {
 	# enable HSTS
@@ -54,6 +55,7 @@ meet.nofech.cz, jitsi.nofech.cz {
 
 	# disable clients from sniffing the media type
 	#X-Content-Type-Options nosniff
+	Access-Control-Allow-Origin *
 
 	# clickjacking protection
 	#X-Frame-Options DENY

@@ -3,6 +3,48 @@
     "http": {
       "servers": {
         "srv0": {
+          "automatic_https": {
+            "skip": [
+              "217.195.164.4"
+            ]
+          },
+          "listen": [
+            ":80"
+          ],
+          "routes": [
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "static_response",
+                          "headers": {
+                            "Location": [
+                              "https://mee.nofech.cz{http.request.uri}"
+                            ]
+                          },
+                          "status_code": 302
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "217.195.164.4"
+                  ]
+                }
+              ],
+              "terminal": true
+            }
+          ]
+        },
+        "srv1": {
           "listen": [
             ":443"
           ],
@@ -37,12 +79,17 @@
                         {
                           "path": [
                             "/css/*",
+                            "/fonts/*",
                             "/static/*",
                             "/images/*",
                             "/lang/*",
                             "/libs/*",
                             "/sounds/*",
-                            "/extra/*"
+                            "/extra/*",
+                            "/*.js",
+                            "/*.ico",
+                            "/*.html",
+                            "/*.txt"
                           ]
                         }
                       ]
@@ -53,6 +100,9 @@
                           "handler": "headers",
                           "response": {
                             "set": {
+                              "Access-Control-Allow-Origin": [
+                                "*"
+                              ],
                               "Referrer-Policy": [
                                 "no-referrer-when-downgrade"
                               ],
@@ -72,7 +122,7 @@
                       ]
                     },
                     {
-                      "group": "group9",
+                      "group": "group10",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -111,7 +161,7 @@
                       ]
                     },
                     {
-                      "group": "group9",
+                      "group": "group10",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -150,7 +200,7 @@
                       ]
                     },
                     {
-                      "group": "group9",
+                      "group": "group10",
                       "handle": [
                         {
                           "handler": "subroute"
@@ -160,18 +210,23 @@
                         {
                           "path": [
                             "/css/*",
+                            "/fonts/*",
                             "/static/*",
                             "/images/*",
                             "/lang/*",
                             "/libs/*",
                             "/sounds/*",
-                            "/extra/*"
+                            "/extra/*",
+                            "/*.js",
+                            "/*.ico",
+                            "/*.html",
+                            "/*.txt"
                           ]
                         }
                       ]
                     },
                     {
-                      "group": "group9",
+                      "group": "group10",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -249,12 +304,17 @@
                         {
                           "path": [
                             "/css/*",
+                            "/fonts/*",
                             "/static/*",
                             "/images/*",
                             "/lang/*",
                             "/libs/*",
                             "/sounds/*",
-                            "/extra/*"
+                            "/extra/*",
+                            "/*.js",
+                            "/*.ico",
+                            "/*.html",
+                            "/*.txt"
                           ]
                         }
                       ]
@@ -265,6 +325,9 @@
                           "handler": "headers",
                           "response": {
                             "set": {
+                              "Access-Control-Allow-Origin": [
+                                "*"
+                              ],
                               "Referrer-Policy": [
                                 "no-referrer-when-downgrade"
                               ],
@@ -284,7 +347,7 @@
                       ]
                     },
                     {
-                      "group": "group11",
+                      "group": "group12",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -323,7 +386,7 @@
                       ]
                     },
                     {
-                      "group": "group11",
+                      "group": "group12",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -362,7 +425,7 @@
                       ]
                     },
                     {
-                      "group": "group11",
+                      "group": "group12",
                       "handle": [
                         {
                           "handler": "subroute"
@@ -372,18 +435,23 @@
                         {
                           "path": [
                             "/css/*",
+                            "/fonts/*",
                             "/static/*",
                             "/images/*",
                             "/lang/*",
                             "/libs/*",
                             "/sounds/*",
-                            "/extra/*"
+                            "/extra/*",
+                            "/*.js",
+                            "/*.ico",
+                            "/*.html",
+                            "/*.txt"
                           ]
                         }
                       ]
                     },
                     {
-                      "group": "group11",
+                      "group": "group12",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -435,48 +503,6 @@
           "tls_connection_policies": [
             {
               "default_sni": "mee.nofech.cz"
-            }
-          ]
-        },
-        "srv1": {
-          "automatic_https": {
-            "skip": [
-              "217.195.164.4"
-            ]
-          },
-          "listen": [
-            ":80"
-          ],
-          "routes": [
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "handler": "static_response",
-                          "headers": {
-                            "Location": [
-                              "https://mee.nofech.cz{http.request.uri}"
-                            ]
-                          },
-                          "status_code": 302
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
-                    "217.195.164.4"
-                  ]
-                }
-              ],
-              "terminal": true
             }
           ]
         }
