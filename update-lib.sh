@@ -13,7 +13,7 @@ mycp() {
   done
 }
 
-for i in images libs css sounds connection_optimization
+for i in libs css images fonts sounds connection_optimization
 do
   rsync -av --delete $JITSRC/$i/ public/$i/
 done
