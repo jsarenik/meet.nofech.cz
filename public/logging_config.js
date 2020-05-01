@@ -3,10 +3,10 @@
 // Logging configuration
 var loggingConfig = {
     // default log level for the app and lib-jitsi-meet
-    defaultLogLevel: 'trace',
+    defaultLogLevel: 'info',
 
     // Option to disable LogCollector (which stores the logs on CallStats)
-    // disableLogCollector: true,
+    disableLogCollector: true,
 
     // The following are too verbose in their logging with the
     // {@link #defaultLogLevel}:

@@ -296,7 +296,7 @@ var config = {
     // This can be useful for debugging purposes (post-processing/analysis of
     // the webrtc stats) as it is done in the jitsi-meet-torture bandwidth
     // estimation tests.
-    gatherStats: false,
+    // gatherStats: false,
 
     // The interval at which PeerConnection.getStats() is called. Defaults to 10000
     // pcStatsInterval: 10000,
@@ -318,7 +318,7 @@ var config = {
     // If third party requests are disabled, no other server will be contacted.
     // This means avatars will be locally generated and callstats integration
     // will not function.
-    //disableThirdPartyRequests: false,
+    // disableThirdPartyRequests: false,
 
 
     // Peer-To-Peer mode: used (if enabled) when there are just 2 participants.
