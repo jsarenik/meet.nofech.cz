@@ -7,17 +7,19 @@ a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; BINDIR=$(cd $a; pwd)
 mycp() {
   for i in "$@"
   do
-    IFDIR=public/${i%/*}
+    d="/$i"; d=${d%/*}; d=${d:-.}; d=${d#/}
+    IFDIR=public/$d
     test "$IFDIR" = "" -a -d $IFDIR || mkdir -p $BINDIR/$IFDIR
-    cp -v "$i" "$BINDIR/public/$i"
+    cp -v "$i" "$BINDIR/public/$d/"
   done
 }
 
-for i in libs css images fonts sounds connection_optimization
+for i in libs css fonts sounds connection_optimization
 do
   rsync -av --delete $JITSRC/$i/ public/$i/
 done
 rsync -av $JITSRC/lang/ public/lang/
+rsync -av $JITSRC/images/ public/images/
 rsync -av $JITSRC/static/ $JITSRC/index.html static/
 
 cd $JMCOPY
