@@ -31,3 +31,4 @@ done
 cat public/static/index.html > public/index.html
 
 #./makelast.sh
+./pngtowebp.sh
