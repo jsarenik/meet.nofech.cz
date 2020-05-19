@@ -28,7 +28,3 @@ mycp css/all.css images/add_to_slack.png images/welcome_page/appstore.svg images
 
 cd $JITSRC
 mycp plugin.head.html head.html base.html title.html
-
-cd $BINDIR
-cp -v main-cs.json languages-cs.json public/lang/
-cp -v deep-linking-image.png public/images/

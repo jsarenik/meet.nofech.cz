@@ -1,5 +1,8 @@
 #!/bin/sh
 
+cp -v main-cs.json languages-cs.json public/lang/
+cp -v deep-linking-image.png public/images/
+
 MYHASH=$(git rev-parse --short HEAD)
 PROCESS=${*:-"static/*.html"}
 for i in $PROCESS
