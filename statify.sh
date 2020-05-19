@@ -28,6 +28,15 @@ s|^\s*<script src=\"\([a-z]\)|<script src=\"/\1|" \
 s|^\s*<script src=\"\/\/|<script src=\"/|" \
   > public/$i
 done
+
+# Now for config files
+PROCESS=${*:-"config/*.js"}
+for i in $PROCESS
+do
+  sed -e '/^#/d;/^$/d;s/^\s\+//;/^\/\//d;/^\/\*.*\*\/$/d' $i \
+  > public/${i##config/}
+done
+
 cat public/static/index.html > public/index.html
 
 #./makelast.sh
