@@ -26,3 +26,5 @@ s|^\s*<script src=\"\/\/|<script src=\"/|" \
   > public/$i
 done
 cat public/static/index.html > public/index.html
+
+./makelast.sh
