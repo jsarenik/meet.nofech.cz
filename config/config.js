@@ -476,54 +476,10 @@ var config = {
     // disableRemoteMute: true,
 
     // List of undocumented settings used in jitsi-meet
-    /**
-     _immediateReloadThreshold
-     autoRecord
-     autoRecordToken
-     debug
-     debugAudioLevels
-     deploymentInfo
-     dialInConfCodeUrl
-     dialInNumbersUrl
-     dialOutAuthUrl
-     dialOutCodesUrl
-     disableRemoteControl
-     displayJids
-     etherpad_base
-     externalConnectUrl
-     firefox_fake_device
-     googleApiApplicationClientID
-     iAmRecorder
-     iAmSipGateway
-     microsoftApiApplicationClientID
-     peopleSearchQueryTypes
-     peopleSearchUrl
-     requireDisplayName
-     tokenAuthUrl
-     */
+    /* _immediateReloadThreshold autoRecord autoRecordToken debug debugAudioLevels deploymentInfo dialInConfCodeUrl dialInNumbersUrl dialOutAuthUrl dialOutCodesUrl disableRemoteControl displayJids etherpad_base externalConnectUrl firefox_fake_device googleApiApplicationClientID iAmRecorder iAmSipGateway microsoftApiApplicationClientID peopleSearchQueryTypes peopleSearchUrl requireDisplayName tokenAuthUrl */
 
     // List of undocumented settings used in lib-jitsi-meet
-    /**
-     _peerConnStatusOutOfLastNTimeout
-     _peerConnStatusRtcMuteTimeout
-     abTesting
-     avgRtpStatsN
-     callStatsConfIDNamespace
-     callStatsCustomScriptUrl
-     desktopSharingSources
-     disableAEC
-     disableAGC
-     disableAP
-     disableHPF
-     disableNS
-     enableLipSync
-     enableTalkWhileMuted
-     forceJVB121Ratio
-     hiddenDomain
-     ignoreStartMuted
-     nick
-     startBitrate
-     */
+    /* _peerConnStatusOutOfLastNTimeout _peerConnStatusRtcMuteTimeout abTesting avgRtpStatsN callStatsConfIDNamespace callStatsCustomScriptUrl desktopSharingSources disableAEC disableAGC disableAP disableHPF disableNS enableLipSync enableTalkWhileMuted forceJVB121Ratio hiddenDomain ignoreStartMuted nick startBitrate */
 
 
     // Allow all above example options to include a trailing comma and
