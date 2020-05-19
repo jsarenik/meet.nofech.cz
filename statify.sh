@@ -1,5 +1,6 @@
 #!/bin/sh
 
+MYHASH=$(git rev-parse --short HEAD)
 PROCESS=${*:-"static/*.html"}
 for i in $PROCESS
 do
@@ -14,7 +15,7 @@ sed \
 s|^\s*<!--#include virtual=\"\([^\"]\+\).*|#include \"public/\1\"|" \
   -e "/\s*<script><!--#include/\
 s|^\s*<script><!--#include virtual=\"\([^\"]\+\).*|\
-<script src=\"/\1\"></script>|" \
+<script src=\"/\1\?v=$MYHASH\"></script>|" \
   $i \
   | cpp \
   | sed -e '/^#/d;/^$/d;s/^\s\+//' \
