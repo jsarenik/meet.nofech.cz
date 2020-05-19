@@ -6,4 +6,4 @@ cp -v \
   $JITSRC/config.js \
   $JITSRC/interface_config.js \
   $JITSRC/logging_config.js \
-  public/
+  config/
